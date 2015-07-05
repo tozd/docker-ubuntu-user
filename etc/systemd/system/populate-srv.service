@@ -1,0 +1,12 @@
+[Unit]
+Description=Populate Docker volume /srv/www
+ConditionDirectoryNotEmpty=!/srv
+ConditionDirectoryNotEmpty=/var/www
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c '/bin/mkdir /srv/www && /bin/cp -n /var/www/* /srv/www || true'
+TimeoutSec=0
+
+[Install]
+WantedBy=apache2.service
