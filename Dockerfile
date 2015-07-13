@@ -1,4 +1,4 @@
-FROM ubuntu-systemd:15.04
+FROM tozd/ubuntu-systemd
 
 # setup locale and timezone
 RUN locale-gen en_US.UTF-8 sl_SI.UTF-8 \
@@ -110,9 +110,9 @@ RUN apt-get update -qq && apt-get install -y \
  && a2enmod actions fastcgi alias \
  && a2enconf php5-fpm
 
-EXPOSE 22
+EXPOSE 22/tcp
 
-EXPOSE 80
+EXPOSE 80/tcp
 
 VOLUME ["/home"]
 
